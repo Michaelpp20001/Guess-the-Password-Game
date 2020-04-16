@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
   var guessCount = 4;
   var password = '';
 
-  $("#start").click(() => {
+  $("#start").click, () => {
     toggleClasses(document.getElementById('start-screen'), 'hide', 'show');
     toggleClasses(document.getElementById('game-screen'), 'hide', 'show');
     startGame();
-  })
+  }
   // var start = document.getElementById('start');
   // start.addEventListener('click', () => {
   //   toggleClasses(document.getElementById('start-screen'), 'hide', 'show');
@@ -15,10 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
   //   startGame();
   // });
 
-  function toggleClasses(element) {
-    for (let i = 1; i < arguments.length; i++) {
-      element.classList.toggle(arguments[i]);
-     }
+
+  function toggleClasses(element, ...classNames) {
+    classNames.forEach ( name => element.classList.toggle(name));
+  //   for (let i = 1; i < arguments.length; i++) {
+  //     element.classList.toggle(arguments[i]);
+  //    }
   }
 
   function startGame() {
@@ -45,9 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //wordList.addEventListener('click', updateGame);
   }
 
-  function getRandomValues(array, numberOfVals) {
-    return shuffle(array).slice(0, numberOfVals);
-  }
+  let getRandomValues = (array, namVals=wordCount) => shuffle(array).slice(0,numVals);
+
+  // function getRandomValues(array, numberOfVals) {
+  //   return shuffle(array).slice(0, numberOfVals);
+  // }
 
   function shuffle(array) {
     var arrayCopy = array.slice();
